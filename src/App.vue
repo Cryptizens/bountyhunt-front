@@ -2,9 +2,9 @@
   #app
     h1 Congrats, you solved the challenge!
     p The secret is {{ secret }}.
-    p You can now claim your bounty by clicking on the below button. The bounty will be sent to the Ethereum address from which you will initiate the bounty claim transaction.
-    p Don't worry if you're asked to pay a little sum of Ether, this is required to emit the transaction. The bounty is worth much more than that ;)
-    p Note that you need to have <a href="https://metamask.io/" target="_blank">MetaMask</a> installed, open, and connected to the main Ethereum network.
+    p You can now claim your bounty by clicking on the below button. The bounty will be sent to the Ethereum address from which you will confirm the transaction.
+    p A little sum of Ether is required to emit the transaction. Don't worry, the bounty is worth much more than that ;)
+    p Make sure MetaMask is open and connected to the main Ethereum network.
     button(@click="claimBounty()") Claim the bounty!
 </template>
 
@@ -25,6 +25,7 @@ export default {
         web3.eth.contract(abi).at(address).claimBounty(this.secret, function(error, result){
           console.log('Error: ' + error);
           console.log('Success: ' + result);
+          alert('Success! Enjoy, and please share the cryptorun.brussels love ;)');
         })
       } else {
         alert('Please install MetaMask first', null, null);
